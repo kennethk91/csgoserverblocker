@@ -17,3 +17,18 @@
 .label:pressed{
     -fx-background-color: #000000;
 }
+
+.button {
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: transparent;
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 1px;
+}
+.button:hover{
+    -fx-border-width: 3px;
+}
+.button:pressed{
+
+    -fx-border-width: 4px;
+}
