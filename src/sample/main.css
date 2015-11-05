@@ -1,0 +1,19 @@
+.root {
+    -fx-background-image: url("map.png");
+    -fx-background-repeat: no-repeat;
+}
+
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.label:hover{
+    -fx-border-color: #FFFFFF;
+    -fx-border-width: 1px;
+}
+
+.label:pressed{
+    -fx-background-color: #000000;
+}
