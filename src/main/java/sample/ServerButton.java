@@ -9,8 +9,11 @@ import javafx.scene.control.Button;
  */
 public class ServerButton extends Button {
 
-    public ServerButton(String name, double x, double y){
+    Terminator terminator;
 
+    public ServerButton(Terminator terminator, String name, double x, double y){
+
+        this.terminator = terminator;
         this.setText(name);
         this.setLayoutX(x);
         this.setLayoutY(y);

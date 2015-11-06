@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 
 /**
  * Created by Kenneth on 06.11.2015.
@@ -17,15 +18,11 @@ public class Httper {
 
     public Httper(){
 
-        try {
-            sendGet();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
 
     }
 
-    private void sendGet() throws Exception {
+    public Iterator<String> sendGet() throws Exception {
 
         String url = "http://localhost/servers.json";
 
@@ -59,10 +56,23 @@ public class Httper {
         // use the ObjectMapper to read the json string and create a tree
         String json = response.toString();
         JsonNode node = mapper.readTree(json);
+
+        Iterator<String> nodeIterator = node.fieldNames();
+        while(nodeIterator.hasNext()){
+            String current = nodeIterator.next();
+            System.out.print( node.path(current) + ",");
+        }
+
+        System.out.println("");
+
+
+
+
         String[] ips = node.path("Australia").asText().split(",");
 
         System.out.println(ips[0]);
 
+        return node.fieldNames();
 
     }
 }

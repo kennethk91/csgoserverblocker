@@ -10,18 +10,9 @@
 
     <properties>
         <jackson.version>2.6.3</jackson.version>
-        <fx.path>C:/Program Files/Java/jdk1.8.0_40/jre/lib/ext/jfxrt.jar</fx.path>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>javafx</artifactId>
-            <version>8.0.40</version>
-            <systemPath>${fx.path}</systemPath>
-            <scope>system</scope>
-        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

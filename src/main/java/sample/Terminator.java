@@ -9,7 +9,10 @@ import java.io.InputStreamReader;
  */
 public class Terminator {
 
-
+    public Terminator(){
+        String[] arr = {"1","2","3"};
+        System.out.println(buildIPString(arr));
+    }
 
     /*
     Runs a command in shell and returns result
@@ -37,9 +40,27 @@ public class Terminator {
 
         String rule = String.format("netsh advfirewall firewall add rule name='%s' dir=in interface=any action=%s remoteip=%s", name, action, ip);
         //System.out.println(rule);
-
+        //netsh advfirewall firewall delete rule name=""
         return null;
     }
+
+    /**
+     * Converts array of strings into String with , as delimiter
+     * @param ips String array of IPs
+     * @return String
+     */
+    public String buildIPString(String[] ips){
+        StringBuilder strBuilder = new StringBuilder();
+        for (int i = 0; i < ips.length; i++) {
+            if(i == ips.length - 1)
+                strBuilder.append(ips[i]);
+            else
+                strBuilder.append(ips[i] + ",");
+        }
+        return strBuilder.toString();
+    }
+
+
 
 
 }
