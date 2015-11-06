@@ -17,20 +17,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        final Process p = Runtime.getRuntime().exec("netsh advfirewall show public state");
-
-
-                BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                String line = null;
-                String total = "";
-                try {
-                    while ((line = input.readLine()) != null)
-                        total += line;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            System.out.println("Windows Firewall is on: " + (total.indexOf("ON") != -1));
+        new Httper();
+        Terminator terminator = new Terminator();
+        terminator.addFirewallRule("EU WEST", "block", "127.0.0.1");
+            System.out.println("Windows Firewall is on: " +
+                    (terminator.runCommand("netsh advfirewall show public state").indexOf("ON") != -1));
 
 
 
@@ -44,11 +35,11 @@ public class Main extends Application {
         root.getChildren().add(btn);
 
         Scene scene = new Scene(root, 900, 460);
-        scene.getStylesheets().add
-                (Main.class.getResource("main.css").toExternalForm());
+        //scene.getStylesheets().add(Main.class.getResource("main.css").toExternalForm());
         primaryStage.setTitle("CS:GO Server Blocker v1.0");
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 
