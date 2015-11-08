@@ -1,34 +1,30 @@
 .root {
     -fx-background-image: url("map.png");
     -fx-background-repeat: no-repeat;
+    -fx-background-color: #333333;
 }
 
-.label {
-    -fx-font-size: 16px;
-    -fx-text-fill: #FFFFFF;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
-}
-
-.label:hover{
+.text-area, .text-area{
+    -fx-pref-width: 910;
+    -fx-background-color: #333333;
+    -fx-text-fill: darkcyan;
+    -fx-border-width: 1px 0px 0px 0px;
     -fx-border-color: #FFFFFF;
-    -fx-border-width: 1px;
-}
-
-.label:pressed{
-    -fx-background-color: #000000;
-}
-
-.button {
     -fx-font-size: 14px;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-color: transparent;
-    -fx-border-color: #FFFFFF;
-    -fx-border-width: 1px;
+    -fx-pref-height: 200px;
 }
-.button:hover{
-    -fx-border-width: 3px;
-}
-.button:pressed{
 
-    -fx-border-width: 4px;
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+
+}
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+
 }

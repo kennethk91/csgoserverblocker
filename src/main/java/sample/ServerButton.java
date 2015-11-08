@@ -10,21 +10,53 @@ import javafx.scene.control.Button;
 public class ServerButton extends Button {
 
     Terminator terminator;
+    Boolean exists;
+    Console console;
+    String name;
 
-    public ServerButton(Terminator terminator, String name, double x, double y){
+    public ServerButton(Console console, Terminator terminator, Boolean exists, String name, double x, double y){
 
+        this.console = console;
         this.terminator = terminator;
+        this.exists = exists;
+        this.name = name;
         this.setText(name);
         this.setLayoutX(x);
         this.setLayoutY(y);
 
-        this.setOnAction(new EventHandler<ActionEvent>() {
 
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
+        this.addEventHandler(ActionEvent.ACTION, event -> doSomething());
+
+        if(exists){
+
+            this.getStylesheets().add("buttonE.css");
+
+        }else{
+
+            this.getStylesheets().add("button.css");
+
+        }
 
     }
+
+    public void doSomething(){
+        console.appendText(this.name + "\n");
+
+
+        toggleCSS();
+    }
+
+    public void toggleCSS(){
+
+
+
+
+    }
+
 }
+
+
+
+
+
+
