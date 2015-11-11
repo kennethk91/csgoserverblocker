@@ -10,15 +10,15 @@ import javafx.scene.control.Button;
 public class ServerButton extends Button {
 
     Terminator terminator;
-    Boolean exists;
+    boolean isBlocked;
     Console console;
     String name;
 
-    public ServerButton(Console console, Terminator terminator, Boolean exists, String name, double x, double y){
+    public ServerButton(Console console, Terminator terminator, boolean isBlocked, String name, double x, double y){
 
         this.console = console;
         this.terminator = terminator;
-        this.exists = exists;
+        this.isBlocked = isBlocked;
         this.name = name;
         this.setText(name);
         this.setLayoutX(x);
@@ -27,7 +27,7 @@ public class ServerButton extends Button {
 
         this.addEventHandler(ActionEvent.ACTION, event -> doSomething());
 
-        if(exists){
+        if(isBlocked){
 
             this.getStylesheets().add("buttonE.css");
 
@@ -39,19 +39,34 @@ public class ServerButton extends Button {
 
     }
 
+
     public void doSomething(){
-        console.appendText(this.name + "\n");
 
+        isBlocked = !isBlocked;
 
+        if(isBlocked){
+            console.appendText("Blocked: " + this.name + "\n");
+            this.getStylesheets().add("buttonE.css");
+        }else{
+            console.appendText("Allowed: " + this.name + "\n");
+            this.getStylesheets().add("button.css");
+
+        }
         toggleCSS();
     }
 
+
     public void toggleCSS(){
-
-
-
-
+        if(isBlocked){
+            this.getStylesheets().clear();
+            this.getStylesheets().add("buttonE.css");
+        }else{
+            this.getStylesheets().clear();
+            this.getStylesheets().add("button.css");
+        }
     }
+
+
 
 }
 

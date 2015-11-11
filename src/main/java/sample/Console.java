@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextArea;
 
 /**
@@ -13,8 +14,8 @@ public class Console extends TextArea {
         this.setLayoutX(0);
         this.setLayoutY(460);
         this.setWrapText(true);
-
         this.appendText("Console \n");
+        this.appendText("------------------------------------------------ \n");
 
     }
 }
