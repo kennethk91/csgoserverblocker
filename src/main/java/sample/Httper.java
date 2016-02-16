@@ -4,9 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Iterator;
 
 /**
@@ -73,6 +76,23 @@ public class Httper {
         System.out.println(ips[0]);
 
         return node.fieldNames();
+
+    }
+
+
+    public void getLocalFile() throws IOException{
+        String content = new String(Files.readAllBytes(Paths.get("src/main/resources/test.json")));
+
+        ObjectMapper mapper = new ObjectMapper();
+        // use the ObjectMapper to read the json string and create a tree
+        String json = content;
+        JsonNode node = mapper.readTree(json);
+
+        Iterator<String> nodeIterator = node.fieldNames();
+        while(nodeIterator.hasNext()){
+            String current = nodeIterator.next();
+            System.out.println( node.path(current));
+        }
 
     }
 }

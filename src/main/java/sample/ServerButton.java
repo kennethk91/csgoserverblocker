@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 /**
@@ -28,13 +27,9 @@ public class ServerButton extends Button {
         this.addEventHandler(ActionEvent.ACTION, event -> doSomething());
 
         if(isBlocked){
-
             this.getStylesheets().add("buttonE.css");
-
         }else{
-
             this.getStylesheets().add("button.css");
-
         }
 
     }

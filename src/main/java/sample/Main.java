@@ -1,15 +1,24 @@
 package sample;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
 
         Console console = new Console();
         String[] locations = {"EU North","EU East","EU West","Middle East","US East","US West","US South-West","South-East Asia","South Africa","Australia","South America","India"};
@@ -22,10 +31,10 @@ public class Main extends Application {
         System.out.println("Locations and IPs MATCH: " + (locations.length == ips.length));
         Httper online = new Httper();
         //online.sendGet();
+        online.getLocalFile();
         Terminator terminator = new Terminator();
-        terminator.addFirewallRule("EU WEST", "block", "127.0.0.1");
-            System.out.println("Windows Firewall is on: " +
-                    (terminator.runCommand("netsh advfirewall show public state").indexOf("ON") != -1));
+      //  terminator.addFirewallRule("EU WEST", "block", "127.0.0.1");
+           // System.out.println("Windows Firewall is on: " + (terminator.runCommand("netsh advfirewall show public state").indexOf("ON") != -1));
 
 
        // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -48,6 +57,39 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.show();
+
+
+
+/*
+        String content = new String(Files.readAllBytes(Paths.get("src/main/resources/test.json")));
+
+        ObjectMapper mapper = new ObjectMapper();
+        // use the ObjectMapper to read the json string and create a tree
+        String json = content;
+        JsonNode node = mapper.readTree(json);
+
+        Iterator<String> nodeIterator = node.fieldNames();
+        while(nodeIterator.hasNext()){
+            String current = nodeIterator.next();
+            System.out.println( node.path(current));
+        }
+
+        Terminator terminator = new Terminator();
+
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

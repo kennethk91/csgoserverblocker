@@ -3,6 +3,8 @@ package sample;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Kenneth on 05.11.2015.
@@ -60,7 +62,17 @@ public class Terminator {
         return strBuilder.toString();
     }
 
+    public String getPing(String dest) throws IOException{
 
+        String pingResult = this.runCommand("ping -n 1 " + dest);
+
+        Pattern p = Pattern.compile("(.*?)Average\\s*=\\s*([0-9]+)ms.*");
+        Matcher m = p.matcher(pingResult);
+        if(m.matches())
+            return  m.group(2) + "ms";
+        else
+            return null;
+    }
 
 
 }
