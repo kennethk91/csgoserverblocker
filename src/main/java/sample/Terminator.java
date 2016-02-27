@@ -12,8 +12,7 @@ import java.util.regex.Pattern;
 public class Terminator {
 
     public Terminator(){
-        String[] arr = {"1","2","3"};
-        System.out.println(buildIPString(arr));
+
     }
 
     /*
@@ -69,9 +68,9 @@ public class Terminator {
         Pattern p = Pattern.compile("(.*?)Average\\s*=\\s*([0-9]+)ms.*");
         Matcher m = p.matcher(pingResult);
         if(m.matches())
-            return  m.group(2) + "ms";
+            return  m.group(2) + " ms";
         else
-            return null;
+            return "-";
     }
 
 
